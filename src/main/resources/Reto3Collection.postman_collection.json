@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "22c82f90-b0cb-4f73-88d2-d2693f199e4d",
+		"name": "Reto3Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAllCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/Category/all",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"Category",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCategoryById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/Category/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"Category",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SaveCategory",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
