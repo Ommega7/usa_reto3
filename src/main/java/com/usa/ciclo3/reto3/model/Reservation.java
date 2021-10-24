@@ -20,7 +20,7 @@ public class Reservation implements Serializable {
     @ManyToOne
     @JoinColumn(name="id")
     @JsonIgnoreProperties({"reservations"})
-    private Partyroom partyroom;
+    private Cabin cabin;
 
     @ManyToOne
     @JoinColumn(name="idClient")
@@ -61,13 +61,15 @@ public class Reservation implements Serializable {
         this.status = status;
     }
 
-    public Partyroom getPartyroom() {
-        return partyroom;
+    public Cabin getCabin() {
+        return cabin;
     }
 
-    public void setPartyroom(Partyroom partyroom) {
-        this.partyroom = partyroom;
+    public void setCabin(Cabin cabin) {
+        this.cabin = cabin;
     }
+
+   
 
     public Client getClient() {
         return client;

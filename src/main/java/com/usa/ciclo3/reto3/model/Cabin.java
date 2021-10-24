@@ -8,36 +8,36 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "partyroom")
-public class Partyroom implements Serializable {
+@Table(name = "cabin")
+public class Cabin implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idCabin;
     private String name;
-    private String owner;
-    private Integer capacity;
+    private String brand;     
+    private Integer rooms;
     private String description;
 
     @ManyToOne
     @JoinColumn(name = "idCategory")
-    @JsonIgnoreProperties({"partyrooms"})
+    @JsonIgnoreProperties({"cabin"})
     private Category category;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "partyroom")
-    @JsonIgnoreProperties({"partyroom", "client"})
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cabin")
+    @JsonIgnoreProperties({"cabin", "client"})
     private List<Message> messages;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "partyroom")
-    @JsonIgnoreProperties({"partyroom", "client"})
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cabin")
+    @JsonIgnoreProperties({"cabin", "client"})
     private List<Reservation> reservations;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdCabin() {
+        return idCabin;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdCabin(Integer idCabin) {
+        this.idCabin = idCabin;
     }
 
     public String getName() {
@@ -48,21 +48,23 @@ public class Partyroom implements Serializable {
         this.name = name;
     }
 
-    public String getOwner() {
-        return owner;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
-    public Integer getCapacity() {
-        return capacity;
+    public Integer getRooms() {
+        return rooms;
     }
 
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
+    public void setRooms(Integer rooms) {
+        this.rooms = rooms;
     }
+
+   
 
     public String getDescription() {
         return description;
