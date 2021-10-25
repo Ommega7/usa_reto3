@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public class CabinService {
-    
+
     @Autowired
     private CabinRepository cabinRepository;
 
@@ -18,15 +18,15 @@ public class CabinService {
         return cabinRepository.getAll();
     }
 
-    public Optional<Cabin> getCabin(int idCabin) {
-        return cabinRepository.getCabin(idCabin);
+    public Optional<Cabin> getCabin(int id) {
+        return cabinRepository.getCabin(id);
     }
 
     public Cabin save(Cabin cabin) {
-        if (cabin.getIdCabin() == null) {
+        if (cabin.getId() == null) {
             return cabinRepository.save(cabin);
         } else {
-            Optional<Cabin> tmpCabin = cabinRepository.getCabin(cabin.getIdCabin());
+            Optional<Cabin> tmpCabin = cabinRepository.getCabin(cabin.getId());
             if (tmpCabin.isEmpty()) {
                 return cabinRepository.save(cabin);
             } else {
@@ -36,13 +36,30 @@ public class CabinService {
     }
 
     public Cabin update(Cabin cabin) {
-        if (cabin.getIdCabin() != null) {
-            Optional<Cabin> tmpCabin = cabinRepository.getCabin(cabin.getIdCabin());
+        if (cabin.getId() != null) {
+            Optional<Cabin> tmpCabin = cabinRepository.getCabin(cabin.getId());
             if (!tmpCabin.isEmpty()) {
-                return cabinRepository.save(cabin);
+                if (cabin.getName() != null) {
+                    tmpCabin.get().setName(cabin.getName());
+                }
+                if (cabin.getBrand() != null) {
+                    tmpCabin.get().setBrand(cabin.getBrand());
+                }
+                if (cabin.getRooms() != null) {
+                    tmpCabin.get().setRooms(cabin.getRooms());
+                }
+                if (cabin.getDescription()!= null) {
+                    tmpCabin.get().setDescription(cabin.getDescription());
+                }
+                cabinRepository.save(tmpCabin.get());
+                return tmpCabin.get();
+            } else {
+                return cabin;
             }
+        } else {
+            return cabin;
         }
-        return cabin;
+
     }
 
     public boolean deleteCabin(int id) {
@@ -52,5 +69,5 @@ public class CabinService {
         }).orElse(false);
         return result;
     }
-    
+
 }

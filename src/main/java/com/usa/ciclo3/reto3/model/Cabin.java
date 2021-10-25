@@ -13,7 +13,7 @@ public class Cabin implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCabin;
+    private Integer id;
     private String name;
     private String brand;     
     private Integer rooms;
@@ -21,7 +21,7 @@ public class Cabin implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "idCategory")
-    @JsonIgnoreProperties({"cabin"})
+    @JsonIgnoreProperties("cabins")
     private Category category;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "cabin")
@@ -32,12 +32,12 @@ public class Cabin implements Serializable {
     @JsonIgnoreProperties({"cabin", "client"})
     private List<Reservation> reservations;
 
-    public Integer getIdCabin() {
-        return idCabin;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdCabin(Integer idCabin) {
-        this.idCabin = idCabin;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

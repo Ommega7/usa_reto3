@@ -19,7 +19,7 @@ public class Reservation implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="id")
-    @JsonIgnoreProperties({"reservations"})
+    @JsonIgnoreProperties("reservations")
     private Cabin cabin;
 
     @ManyToOne

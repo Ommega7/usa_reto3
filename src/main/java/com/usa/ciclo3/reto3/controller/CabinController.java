@@ -20,9 +20,9 @@ public class CabinController {
         return cabinService.getAll();
     }
     
-    @GetMapping("/{idCabin}")
-    public Optional<Cabin> getCabin(@PathVariable("idCabin") int idCabin) {
-        return cabinService.getCabin(idCabin);
+    @GetMapping("/{id}")
+    public Optional<Cabin> getCabin(@PathVariable("id") int id) {
+        return cabinService.getCabin(id);
     }
     
     @PostMapping("/save")
@@ -37,10 +37,10 @@ public class CabinController {
         return cabinService.update(cabin);
     }
     
-    @DeleteMapping("/{idCabin}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("idCabin") int idCabin) {
-        return cabinService.deleteCabin(idCabin);
+    public boolean delete(@PathVariable("id") int id) {
+        return cabinService.deleteCabin(id);
     }   
     
 }
